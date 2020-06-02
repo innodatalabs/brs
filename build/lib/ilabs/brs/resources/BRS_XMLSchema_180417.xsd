@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://innodatalabs.com/brs" xmlns="http://innodatalabs.com/brs" >
+<!--
+  (C) 2017-2027 InnodataLabs
+  Universal batch-record-sequence annotation schema
+  Changelog:
+  MK: 2017/04/11 - initial version
+  MK: 2017/04/18 - fixed Unique Particle nonsense
+  MK: 2017/06/15 - relaxed schema to allow arbitrary attributes at B and R levels
+ -->
+  <xs:element name="b" type="BatchType" />
+  <xs:element name="s" type="SequenceType" />
+  <xs:complexType name="BatchType">
+    <xs:sequence>
+      <xs:element type="RecordType" name="r" maxOccurs="unbounded" minOccurs="1" />
+    </xs:sequence>
+    <xs:anyAttribute namespace="##any" processContents="lax" />
+  </xs:complexType>
+  <xs:complexType name="RecordType" mixed="true">
+    <xs:sequence>
+      <xs:any namespace="##any" processContents="lax" maxOccurs="unbounded" minOccurs="0" />
+    </xs:sequence>
+    <xs:anyAttribute namespace="##any" processContents="lax" />
+  </xs:complexType>
+  <xs:complexType name="SequenceType" mixed="true">
+    <xs:sequence>
+      <xs:any namespace="##any" processContents="lax" maxOccurs="unbounded" minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="l" type="xs:string" />
+    <xs:attribute name="c" type="xs:string" />
+    <xs:anyAttribute namespace="##any" processContents="lax" />
+  </xs:complexType>
+</xs:schema>
