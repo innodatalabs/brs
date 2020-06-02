@@ -7,7 +7,7 @@ Namespace is:
 http://innodatalabs.com/brs
 ```
 
-## Validating BRS parser
+## BRS parser (validates XML agains BRS schema)
 
 ```python
 from ilabs.brs import parse_brs
